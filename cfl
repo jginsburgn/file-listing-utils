@@ -1,0 +1,12 @@
+#!/usr/bin/env bash
+
+# Define important variables.
+FILE_LISTINGS_DIR="$HOME/file_listings";
+NEW_FILE_LISTING=$(date "+%y%m%d%H%M%S");
+MESSAGE="$@";
+
+# Concatenate the input message to the find output (file listing) and write to file.
+cat <(echo $MESSAGE) <(sudo find / 2> /dev/null) > $NEW_FILE_LISTING;
+mv $NEW_FILE_LISTING "$FILE_LISTINGS_DIR/";
+# Echo the name of the new file.
+echo $NEW_FILE_LISTING;

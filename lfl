@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+FILE_LISTINGS_DIR="/Users/jonathan/file_listings"
+find -E $FILE_LISTINGS_DIR -regex ".*[0-9]{12}" | sort | xargs -n 1 bash -c 'printf $0; printf ": "; head -n 1 $0;';
